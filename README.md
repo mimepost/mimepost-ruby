@@ -18,9 +18,10 @@ Via RubyGems
 gem install mimepost
 ```
 
-## Getting Started
+## Usage
 
-Please follow the [installation](#installation) procedure and then run the following code:
+Example on how to send an simple email:
+
 ```ruby
 # Load the gem
 require 'mimepost'
