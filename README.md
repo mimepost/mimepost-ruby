@@ -33,14 +33,26 @@ Mimepost.configure do |config|
   #config.api_key_prefix['X-Auth-Token'] = 'Bearer'
 end
 
-api_instance = Mimepost::AccountsApi.new
+api_instance = Mimepost::EmailsApi.new
+
+body = Mimepost::Email.new
+body.html           = '<p>Email send using MimePost ruby sdk</p>'
+body.subject        = 'Email send using MimePost ruby sdk'
+body.from_email     = 'from@example.com'
+body.from_name      = 'Mail Sender'
+
+to                  = Mimepost::EmailTo.new
+to.email            = 'to@example.com'
+
+body.to             = [to]
+
 
 begin
   #Get account profile details
-  result = api_instance.account_profile_get
+  result = api_instance.send_email(body)
   p result
 rescue Mimepost::ApiError => e
-  puts "Exception when calling AccountsApi->account_profile_get: #{e}"
+  puts "Exception when calling EmailsApi->send_email: #{e}"
 end
 
 ```
